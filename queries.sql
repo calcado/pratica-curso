@@ -10,7 +10,7 @@ CREATE TABLE students(
 CREATE TABLE classes(
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL UNIQUE,
-    studentId INTEGER NOT NULL FOREIGN KEY REFERENCES "students"("id"),
+    studentId INTEGER NOT NULL REFERENCES "students"("id"),
     arrival DATE NOT NULL DEFAULT NOW(),
     departure DATE NOT NULL
 
@@ -19,10 +19,10 @@ CREATE TABLE classes(
 CREATE TABLE projects(
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
-    studentId INTEGER NOT NULL FOREIGN KEY REFERENCES "students"("id"),
-    classId INTEGER NOT NULL FOREIGN KEY REFERENCES "classes"("id"),
+    studentId INTEGER NOT NULL REFERENCES "students"("id"),
+    classId INTEGER NOT NULL REFERENCES "classes"("id"),
     deadline DATE NOT NULL,
-    categoryId INTEGER NOT NULL FOREIGN KEY REFERENCES "categories"("id")
+    categoryId INTEGER NOT NULL REFERENCES "categories"("id")
 );
 
 CREATE TABLE categories(
